@@ -1,5 +1,0 @@
-Dependencies for Project 'ZAD 1', Target 'Target 1': (DO NOT MODIFY !)
-F (.\Startup.s)(0x51C80D6E)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Users\janol\ARM\RV31\INC-I C:\Users\janol\ARM\CMSIS\Include-I C:\Users\janol\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\main.c)(0x68237A5B)()
-F (.\timer.c)(0x68237A6D)()
-F (.\timer.h)(0x68237A76)()
