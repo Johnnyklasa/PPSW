@@ -1,5 +1,5 @@
 #define NULL '\0' 
-
+#include <LPC21xx.H>
 
 
 void ReplaceCharactersInString(char pcString[], char cOldChar, char cNewChar)

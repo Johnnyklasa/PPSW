@@ -1,6 +1,5 @@
-#include <LPC21xx.H>
+
 #include "biblio.h"
-#define NULL '\0' 
 #define MAX_TOKEN_NUMBER 3
 #define MaxKeywordStringLTH 10
 #define MaxKeywordNumber 3
@@ -145,10 +144,8 @@ void DecodeMsg(char *pcString){
 
 	
 int main(){
-	char pcStr[19]="store chuj jasiek";
-	enum TokenCode eEnum;
-	ucFindTokensInString(pcStr);
-	eStringToKeyword(pcStr,&eEnum);
+	char test[17]="load 0x1 NIGGEROW";
+	DecodeMsg(test);
 	
 	
 }
