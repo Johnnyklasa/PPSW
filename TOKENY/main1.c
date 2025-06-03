@@ -1,60 +1,15 @@
 #include <LPC21xx.H>
+#include "biblio.h"
 #define NULL '\0' 
 #define MAX_TOKEN_NUMBER 3
 #define MaxKeywordStringLTH 10
 #define MaxKeywordNumber 3
 
-enum CompResult {DIFFERENT, EQUAL};
-enum CompResult eCompareString(char pcStr1[], char pcStr2[])
-{
 
-    unsigned char ucCharacterCounter;
 
-    for(ucCharacterCounter = 0 ; pcStr1[ucCharacterCounter] != NULL || pcStr2[ucCharacterCounter] != NULL ; ucCharacterCounter++)
-    {
-        if( pcStr1[ucCharacterCounter] != pcStr2[ucCharacterCounter] )
-        {
-            return DIFFERENT;
-        }
-    }
-    
-    return EQUAL;
-}
-enum Result {OK, ERROR};
 
-enum Result eHexStringToUInt(char pcStr[],unsigned int *puiValue)
-{
-    unsigned char ucCharacterCounter;
-    unsigned char ucCurrentCharacter;
 
-    *puiValue = 0;
-    if((pcStr[0] != '0') || (pcStr[1] != 'x') || (pcStr[2] == NULL))
-    {
-        return ERROR;
-    }
-    for(ucCharacterCounter = 2; pcStr[ucCharacterCounter] !=NULL ; ucCharacterCounter++)
-    {
-        ucCurrentCharacter = pcStr[ucCharacterCounter];
-        if (ucCharacterCounter == 6)
-        {
-            return ERROR;
-        }
-	  *puiValue = *puiValue << 4;
-        if((ucCurrentCharacter <= '9') && (ucCurrentCharacter >= '0'))
-        {
-            *puiValue = (*puiValue) | (ucCurrentCharacter - '0');
-        }
-        else if((ucCurrentCharacter <= 'F') && (ucCurrentCharacter >= 'A'))
-        {
-            *puiValue = (*puiValue) | (ucCurrentCharacter - 'A' + 10);
-        }
-        else
-        {
-            return ERROR;
-        }
-    }
-    return OK;
-}
+
 
 enum TokenType {STRING, NUMBER, KEYWORD}; 
 enum TokenCode {LD, ST, RST};
@@ -88,13 +43,13 @@ struct KeyWord asKeywordList[MaxKeywordNumber]=
 enum States {TOKEN, DELIMITER};
 unsigned char ucTokenNumber;
 
-unsigned char ucFindTokensInString (char *pcString){
+unsigned char ucFindTokensInString (char *pcString){ //Funkcja rozdziela komunikat na max 3 tokeny i pointer do kazdego z nich wrzuca na dany element struktury 
 	unsigned char ucCharCounter;
 	unsigned char ucCurrChar;
 	enum States eState=DELIMITER;
 	ucTokenNumber=0;
 	
-	for(ucCharCounter=0;;ucCharCounter++){
+	for(ucCharCounter=0;;ucCharCounter++){//iterujemy po znakach 
 		ucCurrChar=pcString[ucCharCounter];
 		
 		switch(eState){
@@ -106,7 +61,7 @@ unsigned char ucFindTokensInString (char *pcString){
 			else if (ucCurrChar!=' '){
 				eState=TOKEN;
 				
-				asToken[ucTokenNumber].uValue.pcString = pcString + ucCharCounter;// na dany element tablicy struktur na jego wartosc pointera na pc string w unii Value przypisujemy wskaznik na pierwszy znak kazdego stringa
+				asToken[ucTokenNumber].uValue.pcString = pcString + ucCharCounter;//Na dany element tablicy przypisz pointer do danego tokenu
 				ucTokenNumber++;
 			}
 			else{
@@ -135,11 +90,11 @@ unsigned char ucFindTokensInString (char *pcString){
 
 enum Results {ALLRIGHT, ERRORs};
 
-enum Results eStringToKeyword (char pcStr[],enum TokenCode *peKeywordCode){
+enum Results eStringToKeyword (char pcStr[],enum TokenCode *peKeywordCode){//funkcja porównuje danego stringa do 3 keywordów. jesli bedatakie same to wrzuca kod tokena na adres zmiennej
 		unsigned char ucCharCounter;
 	  for (ucCharCounter=0; ucCharCounter<MaxKeywordNumber; ucCharCounter++){
-			if(eCompareString(asKeywordList[ucCharCounter].cString,pcStr)==EQUAL){
-				*peKeywordCode= asKeywordList[ucCharCounter].eKeyword;
+			if(eCompareString(asKeywordList[ucCharCounter].cString,pcStr)==EQUAL){//sprawdzaj czy dany string jest rowny keywordowi
+				*peKeywordCode= asKeywordList[ucCharCounter].eKeyword;//podana zmienna ustaw na wartosc danego tokena
 				return ALLRIGHT;				
 			}
 		}
@@ -149,14 +104,14 @@ return ERRORs;
 void DecodeTokens(){
 		
 	unsigned char ucTokenCounter;
-	struct Token *psCurrenttoken; 
+	struct Token *psCurrenttoken; //tworzymy pointer do strukturty typu token
 	for (ucTokenCounter=0; ucTokenNumber>ucTokenCounter;ucTokenCounter++){
-		psCurrenttoken=&asToken[ucTokenCounter];
+		psCurrenttoken=&asToken[ucTokenCounter];//ustaw zeby pointer wskazywal na dany element tablicy
 		if (eStringToKeyword(psCurrenttoken->uValue.pcString, &psCurrenttoken->uValue.eKeyword)==ALLRIGHT){
-		//wez adres skladowej uiNumber znajdujacej sie w uValue, która z kolei jest skladowa struktury/unii wskazywanej przez psCurrenttoken".
-			psCurrenttoken->eType= KEYWORD;
+		//wez wartosc zmiennej na która wskazuje pointer na stringa elementu tablicy który jest wskazywany i gdy okaza sie te same wrzuc wartosc keyworda do struktury 
+			psCurrenttoken->eType= KEYWORD;//ustaw typ na keyword
 		}
-		else if (eHexStringToUInt(psCurrenttoken->uValue.pcString,&psCurrenttoken->uValue.uiNumber)==OK){
+		else if (eHexStringToUInt(psCurrenttoken->uValue.pcString,&psCurrenttoken->uValue.uiNumber)==OK){//z elementu tablicy na który wskazuje pointer wez stringa na który wskazuje pointer wewnatrz unii i nastepnie przypisz wartosc do struktury jako number
 			psCurrenttoken->eType= NUMBER;
 		}
 		else {

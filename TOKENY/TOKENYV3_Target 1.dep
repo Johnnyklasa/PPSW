@@ -1,4 +1,5 @@
 Dependencies for Project 'TOKENYV3', Target 'Target 1': (DO NOT MODIFY !)
 F (.\Startup.s)(0x51C80D6E)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Users\janol\ARM\RV31\INC-I C:\Users\janol\ARM\CMSIS\Include-I C:\Users\janol\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
-F (.\main1.c)(0x6835E9C0)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Users\janol\ARM\RV31\INC-I C:\Users\janol\ARM\CMSIS\Include-I C:\Users\janol\ARM\Inc\Philips-o .\main1.o --omf_browse .\main1.crf --depend .\main1.d)
+F (.\main1.c)(0x683F2ECA)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Users\janol\ARM\RV31\INC-I C:\Users\janol\ARM\CMSIS\Include-I C:\Users\janol\ARM\Inc\Philips-o .\main1.o --omf_browse .\main1.crf --depend .\main1.d)
 I (C:\Users\janol\ARM\Inc\Philips\LPC21xx.H)(0x51C80D9C)
+F (.\biblio.h)(0x683F2F29)()
