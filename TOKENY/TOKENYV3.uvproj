@@ -402,6 +402,11 @@
               <FileType>1</FileType>
               <FilePath>.\main1.c</FilePath>
             </File>
+            <File>
+              <FileName>biblio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\biblio.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
