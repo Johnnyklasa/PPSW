@@ -7,7 +7,6 @@
 void Automat(){
 	enum LedState{LEDRIGHT, LEDSTOP, LEDLEFT};
 	enum LedState eLedState = LEDSTOP;
-	while(1){
 		switch (eLedState){
 		case LEDRIGHT:
 			LedStepRight();
@@ -33,7 +32,7 @@ void Automat(){
 						eLedState = LEDSTOP; }
 				break;
 			default:
-			break; }}	
+			break; }	
 }
 
 
