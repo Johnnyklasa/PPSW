@@ -1,4 +1,4 @@
 .\main.o: main.c
-.\main.o: led.h
-.\main.o: timer_interrupt.h
-.\main.o: keyboard.h
+.\main.o: led1.h
+.\main.o: timer_interrupts.h
+.\main.o: keyboard1.h
