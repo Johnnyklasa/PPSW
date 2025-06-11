@@ -6,22 +6,32 @@
 int main (){
 	KeyboardInit();
 	ServoInit(50);
+	
+	ServoGoTo(24);
+	ServoGoTo(12);
+	
 	while(1){
-		if(eKeyboardRead()==BUTTON_0){
-			ServoCallib();
-		}
-		
-		else if(eKeyboardRead()==BUTTON_1){
-			ServoGoTo(12);
-		}
-		else if(eKeyboardRead()==BUTTON_2){
-			ServoGoTo(24);
-		}
-		else if(eKeyboardRead()==BUTTON_3){
-			ServoGoTo(36);
-		}
+    switch(eKeyboardRead()){
+        case BUTTON_0:
+            ServoCallib();
+            break;
+
+        case BUTTON_1:
+            ServoGoTo(12);
+            break;
+
+        case BUTTON_2:
+            ServoGoTo(24);
+            break;
+
+        case BUTTON_3:
+            ServoGoTo(36);
+            break;
+
+        default:
+            break;
+    }
+	
 	}
 }
-
-
 
