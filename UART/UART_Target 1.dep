@@ -1,0 +1,27 @@
+Dependencies for Project 'UART', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x51C80D6E)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Users\Administrator\Documents\ARM\RV31\INC-I C:\Users\Administrator\Documents\ARM\CMSIS\Include-I C:\Users\Administrator\Documents\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\keyboard.c)(0x6852040A)()
+I (C:\Users\Administrator\Documents\ARM\Inc\Philips\LPC21xx.H)(0x51C80D9C)
+I (C:\Users\Administrator\Desktop\PPSW\UART\keyboard.h)(0x68520409)
+F (.\led.c)(0x6852040B)()
+I (C:\Users\Administrator\Documents\ARM\Inc\Philips\LPC21xx.H)(0x51C80D9C)
+I (C:\Users\Administrator\Desktop\PPSW\UART\led.h)(0x6852040A)
+F (.\timer_interrupts.c)(0x68520408)()
+I (C:\Users\Administrator\Documents\ARM\Inc\Philips\LPC21xx.H)(0x51C80D9C)
+I (C:\Users\Administrator\Desktop\PPSW\UART\timer_interrupts.h)(0x68520407)
+F (.\timer.c)(0x68520406)()
+I (C:\Users\Administrator\Documents\ARM\Inc\Philips\LPC21xx.H)(0x51C80D9C)
+I (C:\Users\Administrator\Desktop\PPSW\UART\timer.h)(0x68520405)
+F (.\main.c)(0x685205FE)()
+I (C:\Users\Administrator\Desktop\PPSW\UART\led.h)(0x6852040A)
+I (C:\Users\Administrator\Desktop\PPSW\UART\keyboard.h)(0x68520409)
+I (C:\Users\Administrator\Desktop\PPSW\UART\timer_interrupts.h)(0x68520407)
+I (C:\Users\Administrator\Desktop\PPSW\UART\timer.h)(0x68520405)
+I (C:\Users\Administrator\Desktop\PPSW\UART\servo.h)(0x685205A1)
+F (.\servo.c)(0x685205F7)()
+I (C:\Users\Administrator\Documents\ARM\Inc\Philips\LPC21xx.H)(0x51C80D9C)
+I (C:\Users\Administrator\Desktop\PPSW\UART\led.h)(0x6852040A)
+I (C:\Users\Administrator\Desktop\PPSW\UART\timer_interrupts.h)(0x68520407)
+I (C:\Users\Administrator\Desktop\PPSW\UART\keyboard.h)(0x68520409)
+I (C:\Users\Administrator\Desktop\PPSW\UART\servo.h)(0x685205A1)
+F (.\uart.c)(0x685207E2)()
